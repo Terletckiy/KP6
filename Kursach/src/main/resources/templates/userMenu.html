@@ -43,6 +43,7 @@
             <div class="col-md-5 col-lg-4 order-md-last" th:if="${user.account.role.equals('USER')}" th:insert="fragments/userNavigation :: userNavigation">
             </div>
 
+
             <div class="col-md-7 col-lg-8" style="background-color: ghostwhite">
                 <h4 class="mb-3">Информация об аккаунте</h4>
                 <div class="needs-validation">
@@ -88,6 +89,10 @@
                         <div class="form-check" th:if="${user.account.role.equals('ADMIN')}">
                             <input id="debit" name="role" type="radio" th:field="${user.account.role}" th:checked="true" th:value="ADMIN" class="form-check-input">
                             <label class="form-check-label" for="debit">Администратор</label>
+                        </div>
+                        <div class="form-check" th:if="${user.account.role.equals('TRAINER')}">
+                            <input id="debit" name="role" type="radio" th:field="${user.account.role}" th:checked="true" th:value="TRAINER" class="form-check-input">
+                            <label class="form-check-label" for="debit">Тренер</label>
                         </div>
                     </div>
 

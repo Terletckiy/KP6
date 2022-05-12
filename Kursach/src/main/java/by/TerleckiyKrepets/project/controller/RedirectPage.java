@@ -28,6 +28,9 @@ public class RedirectPage {
     public static final String UPDATE_USER_SUBSCRIPTION = "updateUserSubscription";
     public static final String USER_SUBSCRIPTION_LIST = "userSubscriptionList";
     public static final String USER_PROJECTS = "userProject";
-
+    public static final String ABOUT_US = "aboutUS";
+    public static final String CONTACTS = "contacts";
+    public static final String VIDEOCLIP = "videoclip";
+    public static final String LOCATION = "location";
     public static final String FIRST_PAGE = "?page=0";
 }

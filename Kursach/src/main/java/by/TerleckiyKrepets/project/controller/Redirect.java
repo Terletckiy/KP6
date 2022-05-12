@@ -8,4 +8,8 @@ public class Redirect {
     public static final String FINANCE_LIST = "redirect:/finance";
     public static final String SALARY_LIST = "redirect:/finance/salary";
     public static final String SUBSCRIPTION_LIST = "redirect:/subscription";
+    public static final String ABOUT_US = "redirect:/aboutUS";
+    public static final String CONTACTS = "redirect:/aboutUS/contacts";
+    public static final String VIDEOCLIP = "redirect:/aboutUS/videoclip";
+    public static final String LOCATION = "redirect:/aboutUS/location";
 }

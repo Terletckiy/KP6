@@ -27,6 +27,14 @@
         </div>
         <div class="form list-group-item d-flex justify-content-between lh-sm">
             <form style="display: block;
+            width: 100%;
+            border: none;"
+                  th:action="@{/user/aboutUS}" th:method="get">
+                <input class="block" type="submit" value="О нас">
+            </form>
+        </div>
+        <div class="form list-group-item d-flex justify-content-between lh-sm">
+            <form style="display: block;
                                      width: 100%;
                                      border: none;"
                   th:action="@{/account/changePassword}" th:method="get">

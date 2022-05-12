@@ -30,21 +30,21 @@ public class UserController {
     }
 
     @GetMapping
-    public String userList(@RequestParam(value = "page", required = false, defaultValue = "0") int page, Model model){
+    public String userList(@RequestParam(value = "page", required = false, defaultValue = "0") int page, Model model) {
         Pageable pageable = PageRequest.of(page, DEFAULT_SIZE);
         Page<User> list = userService.findAllUsers(pageable);
         model.addAttribute("users", list.getContent());
         model.addAttribute("page", list.getNumber());
-        model.addAttribute("pageCount", list.getTotalPages()-1);
+        model.addAttribute("pageCount", list.getTotalPages() - 1);
         return RedirectPage.USER_LIST;
     }
 
     @GetMapping("/{id}")
-    public String userInfo(@PathVariable("id") Long id, Model model){
+    public String userInfo(@PathVariable("id") Long id, Model model) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> accountCheck = userService.findUserByUsername(userDetails.getUsername());
         Optional<User> userCheck = userService.findById(id);
-        if(accountCheck.isPresent() && userCheck.isPresent()) {
+        if (accountCheck.isPresent() && userCheck.isPresent()) {
             model.addAttribute("role", accountCheck.get().getAccount().getRole());
             model.addAttribute("user", userCheck.get());
         }
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String newUser(User user, Account account, Finance finance, Model model){
+    public String newUser(User user, Account account, Finance finance, Model model) {
         account.setRole(Role.USER.toString());
         user.setAccount(account);
         user.setFinance(finance);
@@ -65,7 +65,7 @@ public class UserController {
         String rotation = Redirect.USER_MENU;
         List<String> errors = userService.addUser(user);
         if (!errors.isEmpty() && !bindingResult.hasErrors()) {
-            for (String error: errors) {
+            for (String error : errors) {
                 model.addAttribute(error, true);
             }
             rotation = RedirectPage.SIGN_UP;
@@ -74,12 +74,12 @@ public class UserController {
     }
 
     @GetMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") Long id, Long subscriptionId, Model model){
+    public String updateUser(@PathVariable("id") Long id, Long subscriptionId, Model model) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> accountCheck = userService.findUserByUsername(userDetails.getUsername());
         Optional<User> userCheck = userService.findById(id);
         String rotation = RedirectPage.USER_MENU;
-        if(userCheck.isPresent() && accountCheck.isPresent()) {
+        if (userCheck.isPresent() && accountCheck.isPresent()) {
             rotation = RedirectPage.UPDATE_USER;
             model.addAttribute("role", accountCheck.get().getAccount().getRole());
             model.addAttribute("user", userCheck.get());
@@ -88,20 +88,20 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@Valid User user, BindingResult bindingResult, Model model){
+    public String updateUser(@Valid User user, BindingResult bindingResult, Model model) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> userCheck = userService.findUserByUsername(userDetails.getUsername());
         String rotation = RedirectPage.UPDATE_USER;
-        if(userCheck.isPresent()){
+        if (userCheck.isPresent()) {
             List<String> errors = userService.updateUser(user);
             model.addAttribute("user", userCheck.get());
             if (errors.isEmpty() && !bindingResult.hasErrors()) {
                 rotation = Redirect.USER_MENU;
-                if(!userCheck.get().getAccount().getUsername().equals(user.getAccount().getUsername())){
+                if (!userCheck.get().getAccount().getUsername().equals(user.getAccount().getUsername())) {
                     rotation = Redirect.USER_LIST;
                 }
-            }else{
-                for (String error: errors) {
+            } else {
+                for (String error : errors) {
                     model.addAttribute(error, true);
                 }
             }
@@ -110,18 +110,39 @@ public class UserController {
     }
 
     @GetMapping("/project/{id}")
-    public String userProject(@PathVariable("id") Long id, Model model){
+    public String userProject(@PathVariable("id") Long id, Model model) {
         Optional<User> user = userService.findById(id);
         user.ifPresent(value -> model.addAttribute("user", value));
         return RedirectPage.USER_PROJECTS;
     }
 
     @GetMapping("/menu")
-    public String userMenu(Model model){
+    public String userMenu(Model model) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<User> user = userService.findUserByUsername(userDetails.getUsername());
         user.ifPresent(value -> model.addAttribute("user", value));
         return RedirectPage.USER_MENU;
     }
 
+
+    @GetMapping("/aboutUS")
+    public String aboutUS() {
+        return RedirectPage.ABOUT_US;
+    }
+
+
+    @GetMapping("/aboutUS/contacts")
+    public String contacts() {
+        return RedirectPage.CONTACTS;
+    }
+
+    @GetMapping("/aboutUS/videoclip")
+    public String videoclip() {
+        return RedirectPage.VIDEOCLIP;
+    }
+
+    @GetMapping("/aboutUS/location")
+    public String location() {
+        return RedirectPage.LOCATION;
+    }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css">
+    <style>
+        .block {
+            display: block;
+            width: 100%;
+            border: none;
+            background: none;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            font-size: 15px;
+            font-weight: bolder;
+            cursor: pointer;
+            text-align: left;
+        }
+
+
+        .form:hover {
+            background: rgba(29,46,255,0.08) /* Цвет фона под ссылкой */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <!--            <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
+            <img src="/images/logo-removebg.png" width="72" height="72">
+        </div>
+
+        <div class="row g-5">
+
+            <div class="col-md-5 col-lg-4 order-md-last" th:insert="fragments/aboutUsNavigation :: aboutUsNavigation">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">История Gold's Gym</h4>
+
+
+                    <h3><span class="mw-headline" id="After_Gold_to_Pumping_Iron">After Gold to <i>Pumping Iron</i></span><span class="mw-editsection"></span></h3>
+                    <p>In 1970, Gold sold the at-the-time failing gym to Bud Danits, most commonly known as an antique dealer, and Dave Saxe, a jeweler. They ran the gym for almost two years together as co-owners, and when they realized that this operation was not plausible for them, they were going to close it and reopen the location as an antiques shop. They offered it to a frequently visiting gym member, Ken Sprague, who purchased it in late 1971, and Gold's was saved as a gym. Sprague was the first owner of Gold's to actually sponsor and hold bodybuilding competitions, and his promotional skills and film industry contacts helped build the establishment's profile.
+                    </p>
+                    <p>By 1975, when George Butler was going to film the docudrama Pumping Iron (1977), it was Sprague's savvy, telling Butler that he would paint the windows over to minimize back light, and let Butler mount a lighting grid to the inside ceiling that made Gold's Gym the primary location for filming Pumping Iron, which brought attention not only to the gym itself but also to bodybuilding and physique in general. After the release of the movie, and along with the 1977 Mr. America contest and Mr. America Day parade held in Santa Monica, sponsored and conceived of by Sprague, the profile of Gold's gym grew even larger. That year's Mr. America had more press requests than the 1977 <a href="/wiki/Academy_Awards" title="Academy Awards">Academy Awards</a>. By 1979, when Sprague had sold Gold's Gym, it was the most famous gym in the world. To this day, Gold's Gym is considered a landmark in bodybuilding culture and has achieved cult status.
+                    </p>
+                    <h3><span id="Subsequent_ownership.2C_franchising.2C_and_image"></span><span class="mw-headline" id="Subsequent_ownership,_franchising,_and_image">Subsequent ownership, franchising, and image</span><span class="mw-editsection"></span></h3>
+                    <p>From 1979 to 1999, Gold's Gym was owned by Peter Grymkowski (a Mr. World body building champion) and his partners. After two years of ownership, they moved from the 5500-square-foot facility into a 60,000-square-foot building over a six-year period. Grymkowski's brother became the licensing director, which helped bring the Gold's Gym name from one location to over 534 throughout the U.S. and the world in 1999, when it was sold to private equity firm <a href="/wiki/Brockway_Moran_%26_Partners" title="Brockway Moran &amp; Partners">Brockway Moran &amp; Partners</a>. Another private equity firm, TRT Holdings, bought Gold's Gym in 2004. German fitness company RSG Group acquired Gold's in August 2020.
+                    </p>
+                    <p>Gold's Gym was one of the first companies in the health and fitness industry to franchise, starting in 1980. The company licenses its name to products such as fitness equipment and clothing. The original Gold's Gym logo, a bald weightlifter holding a barbell, was designed in 1973 by professional wrestler Ric Drasin, who was Schwarzenegger's training partner for four years. Notable users of Gold's Gym have included such celebrities as Jessica Alba, Jodie Foster, Morgan Freeman, Dwayne Johnson, Jim Morrison, Keanu Reeves, Hilary Swank, and Tiger Woods, among many others. The original Gold's Gym in Venice Beach is considered a sports landmark by ESPN and is named on its list of the 100 most important sports venues.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="form-validation.js"></script>
+
+
+</body>
+</html>
